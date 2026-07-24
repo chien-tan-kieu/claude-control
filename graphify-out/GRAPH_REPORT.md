@@ -1,13 +1,18 @@
-# Graph Report - .  (2026-07-25)
+# Graph Report - throughline  (2026-07-25)
 
 ## Corpus Check
-- 161 files · ~156,270 words
+- 99 files · ~156,900 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
 - 551 nodes · 755 edges · 67 communities (36 shown, 31 thin omitted)
 - Extraction: 85% EXTRACTED · 15% INFERRED · 0% AMBIGUOUS · INFERRED: 113 edges (avg confidence: 0.83)
 - Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `eb7d3412`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Foundation Design & Hook Contracts|Foundation Design & Hook Contracts]]
