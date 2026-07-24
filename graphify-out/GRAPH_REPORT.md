@@ -1,139 +1,233 @@
-# Graph Report - .  (2026-06-16)
+# Graph Report - .  (2026-07-25)
 
 ## Corpus Check
-- 140 files · ~112,149 words
+- 161 files · ~156,270 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 457 nodes · 748 edges · 31 communities (18 shown, 13 thin omitted)
-- Extraction: 86% EXTRACTED · 14% INFERRED · 0% AMBIGUOUS · INFERRED: 104 edges (avg confidence: 0.85)
+- 551 nodes · 755 edges · 67 communities (36 shown, 31 thin omitted)
+- Extraction: 85% EXTRACTED · 15% INFERRED · 0% AMBIGUOUS · INFERRED: 113 edges (avg confidence: 0.83)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Project Architecture & Concepts|Project Architecture & Concepts]]
-- [[_COMMUNITY_API Route Handlers|API Route Handlers]]
-- [[_COMMUNITY_React Dashboard & Client|React Dashboard & Client]]
-- [[_COMMUNITY_Hook Pipeline & Lifecycle|Hook Pipeline & Lifecycle]]
-- [[_COMMUNITY_Superpowers Watcher & Diff|Superpowers Watcher & Diff]]
-- [[_COMMUNITY_Shared Types & Phase Inference|Shared Types & Phase Inference]]
-- [[_COMMUNITY_REST Endpoints & Plugin Commands|REST Endpoints & Plugin Commands]]
-- [[_COMMUNITY_API Module Implementations|API Module Implementations]]
-- [[_COMMUNITY_Web Pages & Component Tests|Web Pages & Component Tests]]
-- [[_COMMUNITY_Shared API Types & Diff Logic|Shared API Types & Diff Logic]]
-- [[_COMMUNITY_Kanban Board Components|Kanban Board Components]]
-- [[_COMMUNITY_Dashboard Design & Plans|Dashboard Design & Plans]]
-- [[_COMMUNITY_WebSocket Server|WebSocket Server]]
-- [[_COMMUNITY_Security & Auth|Security & Auth]]
-- [[_COMMUNITY_Design System|Design System]]
-- [[_COMMUNITY_Version Sync Scripts|Version Sync Scripts]]
-- [[_COMMUNITY_Story Status & Start Branching|Story Status & Start Branching]]
-- [[_COMMUNITY_Changelog Extraction|Changelog Extraction]]
-- [[_COMMUNITY_Auth Functions|Auth Functions]]
-- [[_COMMUNITY_Engineering Constitution|Engineering Constitution]]
-- [[_COMMUNITY_Runtime JSON Type|Runtime JSON Type]]
-- [[_COMMUNITY_Security Module|Security Module]]
-- [[_COMMUNITY_Story Template Module|Story Template Module]]
-- [[_COMMUNITY_StatusPill Component|StatusPill Component]]
+- [[_COMMUNITY_Foundation Design & Hook Contracts|Foundation Design & Hook Contracts]]
+- [[_COMMUNITY_HandoffService Generation Logic|HandoffService Generation Logic]]
+- [[_COMMUNITY_API Route Mounting|API Route Mounting]]
+- [[_COMMUNITY_Daemon Lifecycle & Startup|Daemon Lifecycle & Startup]]
+- [[_COMMUNITY_Cross-Cutting ServerWeb Wiring|Cross-Cutting Server/Web Wiring]]
+- [[_COMMUNITY_Research Corpus & Prior Art|Research Corpus & Prior Art]]
+- [[_COMMUNITY_Web Dashboard Components|Web Dashboard Components]]
+- [[_COMMUNITY_Start Command & Slash Commands|Start Command & Slash Commands]]
+- [[_COMMUNITY_Superpowers Watcher & Plan Diffing|Superpowers Watcher & Plan Diffing]]
+- [[_COMMUNITY_Shared Types & Zod Schemas|Shared Types & Zod Schemas]]
+- [[_COMMUNITY_Web App Shell & WebSocket Hook|Web App Shell & WebSocket Hook]]
+- [[_COMMUNITY_Hook Event Handling & Session Store|Hook Event Handling & Session Store]]
+- [[_COMMUNITY_Docs Page Design Spec|Docs Page Design Spec]]
+- [[_COMMUNITY_Dashboard Kanban Design Spec|Dashboard Kanban Design Spec]]
+- [[_COMMUNITY_Release & Version Sync Scripts|Release & Version Sync Scripts]]
+- [[_COMMUNITY_Story Detail View Design|Story Detail View Design]]
+- [[_COMMUNITY_WebSocket Server (WsServer)|WebSocket Server (WsServer)]]
+- [[_COMMUNITY_Migration & Service Test Suite|Migration & Service Test Suite]]
+- [[_COMMUNITY_Incremental Story ID Design|Incremental Story ID Design]]
+- [[_COMMUNITY_Design System Tokens|Design System Tokens]]
+- [[_COMMUNITY_Sidebar & WebSocket Store Tests|Sidebar & WebSocket Store Tests]]
+- [[_COMMUNITY_Story Filter Store Tests|Story Filter Store Tests]]
+- [[_COMMUNITY_Stories Refresh & Filter Feature|Stories Refresh & Filter Feature]]
+- [[_COMMUNITY_Process Lifecycle Helpers|Process Lifecycle Helpers]]
+- [[_COMMUNITY_Changelog Extraction Script|Changelog Extraction Script]]
+- [[_COMMUNITY_Auth Rate Limiting|Auth Rate Limiting]]
+- [[_COMMUNITY_Superpowers API Route|Superpowers API Route]]
+- [[_COMMUNITY_Standup API Route|Standup API Route]]
+- [[_COMMUNITY_WebSocket Connection Store|WebSocket Connection Store]]
+- [[_COMMUNITY_UI Filter Store|UI Filter Store]]
+- [[_COMMUNITY_Changelog Script Test|Changelog Script Test]]
+- [[_COMMUNITY_Incremental Story ID Plan|Incremental Story ID Plan]]
+- [[_COMMUNITY_TDD & Verification Rules|TDD & Verification Rules]]
+- [[_COMMUNITY_Bun Toolchain & Release Process|Bun Toolchain & Release Process]]
+- [[_COMMUNITY_StatsGrid Node|StatsGrid Node]]
 - [[_COMMUNITY_TypeIcon Component|TypeIcon Component]]
-- [[_COMMUNITY_StatsGrid Component|StatsGrid Component]]
+- [[_COMMUNITY_HierarchyStrip Component|HierarchyStrip Component]]
+- [[_COMMUNITY_StatusPill Component|StatusPill Component]]
+- [[_COMMUNITY_StepRow Node|StepRow Node]]
+- [[_COMMUNITY_LinkedCard Node|LinkedCard Node]]
+- [[_COMMUNITY_Topbar Test|Topbar Test]]
+- [[_COMMUNITY_Security Module Index|Security Module Index]]
+- [[_COMMUNITY_Runtime JSON Interface|Runtime JSON Interface]]
+- [[_COMMUNITY_Story Template Scaffolding|Story Template Scaffolding]]
+- [[_COMMUNITY_Hook Round-Trip Integration Test|Hook Round-Trip Integration Test]]
+- [[_COMMUNITY_Phase Inference Test|Phase Inference Test]]
+- [[_COMMUNITY_WebSocket Server Test|WebSocket Server Test]]
+- [[_COMMUNITY_Shared Types Barrel|Shared Types Barrel]]
+- [[_COMMUNITY_Spec Viewer Design Contract Skill|Spec Viewer Design Contract Skill]]
+- [[_COMMUNITY_Real-Time Story Sync Plan|Real-Time Story Sync Plan]]
+- [[_COMMUNITY_Stories Status Filter Story|Stories Status Filter Story]]
+- [[_COMMUNITY_Story Routes Mounting|Story Routes Mounting]]
+- [[_COMMUNITY_Spec Parsing Function|Spec Parsing Function]]
+- [[_COMMUNITY_Implementation Notes Rule|Implementation Notes Rule]]
+- [[_COMMUNITY_No Unrequested Commits Rule|No Unrequested Commits Rule]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `StoryService — story CRUD, file watcher, SQLite cache` - 21 edges
+1. `HandoffService` - 20 edges
 2. `SuperpowersWatcher` - 19 edges
 3. `StoryService` - 18 edges
-4. `runMigrations()` - 15 edges
-5. `WsServer` - 12 edges
-6. `PRD — Claude Control Plugin` - 12 edges
-7. `SuperpowersWatcher — file watcher + plan parser + checkbox diff` - 11 edges
-8. `API Client (api.ts)` - 11 edges
-9. `startDaemon()` - 10 edges
-10. `HandoffService` - 9 edges
+4. `runMigrations()` - 16 edges
+5. `Advisor Review — Claude Control (EN)` - 15 edges
+6. `WsServer` - 12 edges
+7. `Superpowers Integration + Stories Design (Phase 2)` - 11 edges
+8. `startDaemon()` - 10 edges
+9. `ensure-daemon.sh bootstrap` - 9 edges
+10. `/throughline:start command` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `StandupService.generate()` --shares_data_with--> `StoryService — story CRUD, file watcher, SQLite cache`  [INFERRED]
-  packages/server/src/standup/index.ts → docs/superpowers/specs/2026-05-13-superpowers-integration-stories-design.md
-- `HandoffService.generate()` --shares_data_with--> `StoryService — story CRUD, file watcher, SQLite cache`  [INFERRED]
-  packages/server/src/handoff/index.ts → docs/superpowers/specs/2026-05-13-superpowers-integration-stories-design.md
-- `stories/service.test.ts` --references--> `StoryService — story CRUD, file watcher, SQLite cache`  [EXTRACTED]
-  packages/server/src/stories/__tests__/service.test.ts → docs/superpowers/specs/2026-05-13-superpowers-integration-stories-design.md
-- `SuperpowersWatcher.maybeAutoLink() (private)` --shares_data_with--> `StoryService — story CRUD, file watcher, SQLite cache`  [INFERRED]
-  packages/server/src/superpowers/index.ts → docs/superpowers/specs/2026-05-13-superpowers-integration-stories-design.md
-- `Test: syncVersion script` --conceptually_related_to--> `Story: Implement versioning and release mechanism`  [INFERRED]
-  packages/server/__tests__/sync-version.test.ts → docs/superpowers/stories/US-2026-06-01-implement-versioning-and-release-mechani.md
+- `Observer-only guarantee` --conceptually_related_to--> `dispatchEvent`  [INFERRED]
+  README.md → packages/server/src/hooks/handlers.ts
+- `docs/superpowers is historical, not a backlog` --conceptually_related_to--> `SuperpowersWatcher`  [INFERRED]
+  plugin/constitution.md → packages/server/src/superpowers/index.ts
+- `Story: Optimize Story ID generation to use incremental integers` --references--> `Migration 004: Story seq column for incremental IDs`  [INFERRED]
+  docs/superpowers/stories/US-2026-06-08-optimize-story-id-generation-to-use-incr.md → packages/server/migrations/004_story_seq.sql
+- `Superpowers lifecycle (brainstorm to implement)` --conceptually_related_to--> `SKILL_PHASE_MAP`  [INFERRED]
+  README.md → packages/server/src/hooks/handlers.ts
+- `Superpowers lifecycle (brainstorm to implement)` --conceptually_related_to--> `advancePhase`  [INFERRED]
+  README.md → packages/server/src/superpowers/phase.ts
 
-## Communities (31 total, 13 thin omitted)
+## Hyperedges (group relationships)
+- **Version propagation across the monorepo** — release_bumpversion, sync_version_syncversion, index_version [INFERRED 0.85]
+- **Services sharing the stories table** — index_storyservice, index_standupservice, index_handoffservice [INFERRED 0.85]
+- **Kanban board render pipeline** — storiespage_storiespage, kanbancolumn_kanbancolumn, storycard_storycard [EXTRACTED 1.00]
+- **Lifecycle phase inference** — handlers_dispatchevent, phase_inferphase, phase_advancephase, index_superpowerswatcher [INFERRED 0.85]
+- **Cross-session handoff generation** — handlers_dispatchevent, handoff_mounthandoffroutes, index_endsession [INFERRED 0.75]
+- **Event bus publish/subscribe fan-out** — handlers_dispatchevent, index_superpowerswatcher, index_wsserver [INFERRED 0.85]
+- **Story status dispatches to mode file** — start_command, backlog_mode, in_progress_mode, done_mode [EXTRACTED 1.00]
+- **Command daemon bootstrap flow** — prd_ensure_daemon, prd_runtime_json, prd_daemon, prd_bearer_auth [INFERRED 0.85]
+- **Kanban context utilities** — prd_user_story, prd_standup_digest, prd_handoff_notes, prd_kanban_layer [EXTRACTED 1.00]
+- **Plan-change pipeline: watcher parses, diffs, infers phase** — 2026_05_13_superpowers_integration_stories_design_superpowerswatcher, 2026_05_13_superpowers_integration_stories_design_parseplan, 2026_05_13_superpowers_integration_stories_design_diffcheckbox, 2026_05_13_superpowers_integration_stories_design_inferphase [EXTRACTED 1.00]
+- **Release mechanism evolution: release-it -> release.mjs/dist branch -> manual workflow_dispatch** — 2026_06_02_versioning_release_design_releaseit, 2026_06_02_versioning_release_design_syncversion, 2026_07_14_plugin_distribution_build_design_releasescript, 2026_07_14_plugin_distribution_build_design_distbranch, 2026_07_17_manual_release_workflow_design_workflowdispatch [INFERRED 0.85]
+- **Cross-session memory: session mining, latest endpoint, resume/start surfaces** — 2026_06_22_auto_handoff_cross_session_memory_design_generateforsession, 2026_06_22_auto_handoff_cross_session_memory_design_latestendpoint, 2026_06_07_start_command_status_branching_design_modefiles [INFERRED 0.85]
+- **Scrum-to-Kanban gap: work-item axis present, iteration axis absent** — advisor_kanban_sdd_companion, advisor_phase_status_orthogonal, advisor_martin_fowler_sdd [INFERRED 0.85]
+- **Coupling fragility risks of the observer layer** — advisor_phase_inference, advisor_superpowers_coupling, advisor_obra_superpowers [INFERRED 0.85]
+- **Version consistency across runtime, status endpoint, and semver source** — us_20260601_semver, us_20260601_runtime_json, us_20260601_status_endpoint_version [INFERRED 0.75]
 
-### Community 0 - "Project Architecture & Concepts"
+## Communities (67 total, 31 thin omitted)
+
+### Community 0 - "Foundation Design & Hook Contracts"
 Cohesion: 0.05
-Nodes (51): Agile Layer — User Stories, Standup, Handoff, Bun Workspace (monorepo host), @cc/server — Bun HTTP daemon package, @cc/shared — Shared TypeScript types, @cc/web — React dashboard package, CHANGELOG — Initial Release v1.0.0, CLAUDE.md — Claude Control Project Guide, Claude Control Daemon (Bun, 127.0.0.1) (+43 more)
+Nodes (62): Bun daemon (port-binding singleton), Throughline Foundation Design (Weeks 1-2), HookEventSchema (Zod discriminated union of 14 hook events), Observer contract (every handler returns exactly {}), persistEvent + session lifecycle store, Security gate (Bearer token + Host check + rate limit), Throughline Foundation Implementation Plan, diffCheckboxState (plan step change detection) (+54 more)
 
-### Community 1 - "API Route Handlers"
-Cohesion: 0.08
-Nodes (16): mountHandoffRoutes(), mountApiRoutes(), mountSessionRoutes(), mountStandupRoutes(), mountStoryRoutes(), mountSuperpowersRoutes(), validatePath(), HandoffService (+8 more)
-
-### Community 2 - "React Dashboard & Client"
-Cohesion: 0.06
-Nodes (11): useWebSocket(), apiFetch(), base(), formatDigest(), handleCopy(), HierarchyStrip(), SizePill(), StatusPill() (+3 more)
-
-### Community 3 - "Hook Pipeline & Lifecycle"
-Cohesion: 0.12
-Nodes (14): dispatchEvent(), handleHookEvent(), registerShutdownHandler(), startIdleTimer(), writeRuntimeJson(), createBus(), startDaemon(), createServer() (+6 more)
-
-### Community 4 - "Superpowers Watcher & Diff"
-Cohesion: 0.06
-Nodes (34): api/superpowers.ts, CheckboxDiff interface, diffCheckboxState(), dispatchEvent(), endSession(), handleHookEvent(), HandoffService.extractPlanSummary() (private), HandoffService.generate() (+26 more)
-
-### Community 5 - "Shared Types & Phase Inference"
+### Community 1 - "HandoffService Generation Logic"
 Cohesion: 0.09
-Nodes (36): advancePhase() function, HookEventSchema — zod discriminated union, inferPhase() function, parseFrontmatter() function, parsePlan() function, parseSpec() function, ParsedPlan / PlanTask / PlanStep types, Phase — brainstorm | spec | plan | implement (+28 more)
+Nodes (10): HandoffService, dispatchEvent(), handleHookEvent(), checkAuth(), RateLimiter, endSession(), persistEvent(), upsertSession() (+2 more)
 
-### Community 6 - "REST Endpoints & Plugin Commands"
-Cohesion: 0.09
-Nodes (31): API /api/handoff endpoint, API /api/plans endpoint, API /api/specs endpoint, API /api/standup endpoint, API /api/stories endpoint, Command: handoff, Command: open, Command: plan (+23 more)
-
-### Community 7 - "API Module Implementations"
+### Community 2 - "API Route Mounting"
 Cohesion: 0.1
-Nodes (28): API: Handoff routes, API Router (mountApiRoutes), API: Session routes, API: Standup routes, API: Story routes (CRUD), ApiCtx — shared service context passed to route handlers, BusEvent union type (hook, plan.changed, story.changed, etc.), isValidStoryId() — dual-format story ID validator (+20 more)
+Nodes (15): mountHandoffRoutes(), relativeAge(), mountApiRoutes(), mountSessionRoutes(), mountStandupRoutes(), mountStoryRoutes(), mountSuperpowersRoutes(), validatePath() (+7 more)
 
-### Community 8 - "Web Pages & Component Tests"
+### Community 3 - "Daemon Lifecycle & Startup"
+Cohesion: 0.11
+Nodes (8): registerShutdownHandler(), startIdleTimer(), writeRuntimeJson(), createBus(), startDaemon(), createServer(), StandupService, runMigrations()
+
+### Community 4 - "Cross-Cutting Server/Web Wiring"
+Cohesion: 0.07
+Nodes (34): handoffs table (session_id migration), api client object, apiFetch, BusEvent union, createBus, DocsPage, HandoffService, StandupService (+26 more)
+
+### Community 5 - "Research Corpus & Prior Art"
+Cohesion: 0.08
+Nodes (33): Advisor Review — Claude Control (EN), Advisor Review — Claude Control (VI), ColeMurray/claude-code-otel, Cross-session memory / handoff (flagship use case), disler/claude-code-hooks-multi-agent-observability, GitHub spec-kit, hoangsonww/Claude-Code-Agent-Monitor, Jesse Vincent — Superpowers blog post (+25 more)
+
+### Community 6 - "Web Dashboard Components"
+Cohesion: 0.08
+Nodes (9): apiFetch(), base(), formatDigest(), handleCopy(), HierarchyStrip(), SizePill(), StatusPill(), TypeIcon() (+1 more)
+
+### Community 7 - "Start Command & Slash Commands"
 Cohesion: 0.13
-Nodes (26): api, DocsPage, DocsPage.test, FilterBar, FilterBar.test, HierarchyStrip, KanbanColumn, KanbanColumn.test (+18 more)
+Nodes (29): Start Mode: Backlog, Start Mode: Done, /throughline:handoff command, Start Mode: In Progress, /throughline:open command, /throughline:plan command, Bearer token + Host validation, Superpowers brainstorming skill (+21 more)
 
-### Community 9 - "Shared API Types & Diff Logic"
+### Community 8 - "Superpowers Watcher & Plan Diffing"
+Cohesion: 0.11
+Nodes (5): parsePlan(), diffCheckboxState(), SuperpowersWatcher, advancePhase(), inferPhase()
+
+### Community 9 - "Shared Types & Zod Schemas"
 Cohesion: 0.12
-Nodes (3): parsePlan(), diffCheckboxState(), SuperpowersWatcher
+Nodes (21): HookEventSchema — zod discriminated union, parseFrontmatter() function, parsePlan() function, ParsedPlan / PlanTask / PlanStep types, Phase — brainstorm | spec | plan | implement, server/superpowers/__tests__/parser.test.ts, server/superpowers/__tests__/watcher.test.ts, shared/api.ts — Phase, Session, WSOut, StandupDigest (+13 more)
 
-### Community 11 - "Dashboard Design & Plans"
-Cohesion: 0.31
-Nodes (10): Dashboard Five Views (Plan, Spec, Story, Stories Board, Standup), claude-control-dashboard-hierarchy.html — Visual Reference, DocsPage — Combined Spec + Plan Tabbed View, claude-control-handoff.md — Dashboard Design Handoff, Phase 3 Plan — Dashboard + Standup + Handoff, Plan — Spec/Plan Viewer Docs Page, Spec — Phase 3 Dashboard Design, Spec — Spec/Plan Viewer Design (DocsPage) (+2 more)
+### Community 10 - "Web App Shell & WebSocket Hook"
+Cohesion: 0.15
+Nodes (3): useWebSocket(), Shell(), MockWebSocket
 
-### Community 14 - "Design System"
+### Community 11 - "Hook Event Handling & Session Store"
+Cohesion: 0.15
+Nodes (17): docs/superpowers is historical, not a backlog, diffCheckboxState, dispatchEvent, SKILL_PHASE_MAP, mountHandoffRoutes, relativeAge, endSession, handleHookEvent (+9 more)
+
+### Community 12 - "Docs Page Design Spec"
+Cohesion: 0.19
+Nodes (14): Active Story Card, Architecture File Change Tables, Story/Docs Completion Checklist, Dark Theme UI Design, Throughline Dashboard, DocsPage Combined Spec+Plan View, Docs Panel with Spec/Plan Tabs, Parent Story & Documents Side Panel (+6 more)
+
+### Community 13 - "Dashboard Kanban Design Spec"
+Cohesion: 0.2
+Nodes (12): Dark Theme UI, Throughline Dashboard, All Stories Kanban Board, Workflow Phase Stepper (Brainstorm / Spec / Plan / Implement), Session ID & Live Status Indicator, Sidebar Navigation (Active Story / Workspace / Reports), Standup Report Link, Status Columns (Backlog / In Progress / Done) (+4 more)
+
+### Community 14 - "Release & Version Sync Scripts"
+Cohesion: 0.33
+Nodes (4): buildChangelogEntry(), bumpVersion(), main(), syncVersion()
+
+### Community 15 - "Story Detail View Design"
+Cohesion: 0.25
+Nodes (11): Acceptance Criteria Checklist, Dark Theme UI, Story Detail View, Linked Documents Panel, Properties Panel (Status/Size), Sidebar Navigation, Spec/Plan Viewer Design Docs, Done Status Badge (+3 more)
+
+### Community 18 - "Migration & Service Test Suite"
+Cohesion: 0.25
+Nodes (5): store/migrate.ts, runMigrations(), standup/service.test.ts, store/store.test.ts, stories/service.test.ts
+
+### Community 19 - "Incremental Story ID Design"
+Cohesion: 0.32
+Nodes (8): isValidStoryId() — dual-format story ID validator, US{n} incremental story ID format, Migration 003: Handoffs table, Migration 001: Initial schema (sessions, events), Migration 004: Story seq column for incremental IDs, Migration 002: Superpowers (stories, plan_tasks, plan_steps), Design: Incremental Story IDs (US{n}), Story: Optimize Story ID generation to use incremental integers
+
+### Community 20 - "Design System Tokens"
 Cohesion: 0.38
 Nodes (7): Border-Defined Depth System, Color Palette & Roles, Component Stylings, HSL-Based Color Token System, Layout Principles, Supabase-Inspired Design System, Typography Rules
 
-### Community 16 - "Story Status & Start Branching"
+### Community 21 - "Sidebar & WebSocket Store Tests"
+Cohesion: 0.47
+Nodes (6): DocsPage.test, Sidebar, Sidebar.test, useWebSocket, useWebSocket.test, useWsStore
+
+### Community 22 - "Story Filter Store Tests"
+Cohesion: 0.5
+Nodes (5): FilterBar, FilterBar.test, StoriesPage.test, useUiStore, ui-store.test
+
+### Community 23 - "Stories Refresh & Filter Feature"
+Cohesion: 0.4
+Nodes (5): Plan — Filter Stories by Status, Spec — Filter Stories by Status Design, Spec — Stories Refresh Button Design, FilterBar Component — Story Status Filter Pills, Stories Board Refresh Button + Last Updated Time
+
+### Community 27 - "Superpowers API Route"
 Cohesion: 0.67
-Nodes (4): Start command mode files (backlog.md, in-progress.md, done.md), Story status enum: backlog, in-progress, done, Start Command Status-Branching Design, Story: Filter stories by status on the board view
+Nodes (3): api/superpowers.ts, mountSuperpowersRoutes(), validatePath() (private)
+
+### Community 28 - "Standup API Route"
+Cohesion: 0.67
+Nodes (3): API Router (mountApiRoutes), API: Standup routes, ApiCtx — shared service context passed to route handlers
+
+## Ambiguous Edges - Review These
+- `frontend-design skill (shared styling system)` → `Phase inference via hardcoded skill names (brittle)`  [AMBIGUOUS]
+  docs/reviews/advisor-review-2026-06-19.en.md · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **63 isolated node(s):** `Typography Rules`, `Layout Principles`, `Bun Workspace (monorepo host)`, `@cc/web — React dashboard package`, `@cc/shared — Shared TypeScript types` (+58 more)
+- **116 isolated node(s):** `Script: extract-changelog`, `web/tailwind.config.js`, `web/postcss.config.js`, `web/test-setup.ts — vitest setup`, `StatsGrid` (+111 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **31 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `StoryService — story CRUD, file watcher, SQLite cache` connect `Project Architecture & Concepts` to `Superpowers Watcher & Diff`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `SuperpowersWatcher` connect `Shared API Types & Diff Logic` to `API Route Handlers`, `Hook Pipeline & Lifecycle`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **Why does `StoryService` connect `API Route Handlers` to `Hook Pipeline & Lifecycle`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Are the 8 inferred relationships involving `StoryService — story CRUD, file watcher, SQLite cache` (e.g. with `Spec — Filter Stories by Status Design` and `CHANGELOG — Initial Release v1.0.0`) actually correct?**
-  _`StoryService — story CRUD, file watcher, SQLite cache` has 8 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `Typography Rules`, `Layout Principles`, `Bun Workspace (monorepo host)` to the rest of the system?**
-  _63 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Project Architecture & Concepts` be split into smaller, more focused modules?**
+- **What is the exact relationship between `frontend-design skill (shared styling system)` and `Phase inference via hardcoded skill names (brittle)`?**
+  _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
+- **Why does `SuperpowersWatcher` connect `Superpowers Watcher & Plan Diffing` to `HandoffService Generation Logic`, `API Route Mounting`, `Daemon Lifecycle & Startup`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Why does `StoryService` connect `API Route Mounting` to `Daemon Lifecycle & Startup`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **Why does `HandoffService` connect `HandoffService Generation Logic` to `API Route Mounting`, `Daemon Lifecycle & Startup`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **What connects `Script: extract-changelog`, `web/tailwind.config.js`, `web/postcss.config.js` to the rest of the system?**
+  _116 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Foundation Design & Hook Contracts` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
-- **Should `API Route Handlers` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+- **Should `HandoffService Generation Logic` be split into smaller, more focused modules?**
+  _Cohesion score 0.09 - nodes in this community are weakly interconnected._
