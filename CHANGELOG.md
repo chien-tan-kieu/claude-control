@@ -9,6 +9,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [3.3.1] - 2026-07-24
+
+- feat(plugin): auto-exclude .throughline/ via git/info/exclude
+- chore: enable throughline plugin for this session
+- docs(constitution): merge principles and project rules into one list
+
 ## [3.3.0] - 2026-07-24
 
 - Merge branch 'feat/per-session-notes'
