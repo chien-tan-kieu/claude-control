@@ -32,6 +32,17 @@
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
-    "understand-anything@understand-anything": true
+    "understand-anything@understand-anything": true,
+    "throughline@throughline": true
+  },
+  "extraKnownMarketplaces": {
+    "throughline": {
+      "source": {
+        "source": "github",
+        "repo": "chien-tan-kieu/throughline",
+        "ref": "dist"
+      },
+      "autoUpdate": true
+    }
   }
 }
