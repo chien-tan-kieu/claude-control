@@ -4,6 +4,19 @@ RUNTIME="${PROJECT_ROOT}/.throughline/runtime.json"
 LOG="${PROJECT_ROOT}/.throughline/daemon.log"
 mkdir -p "${PROJECT_ROOT}/.throughline"
 
+# Best-effort: keep .throughline/ out of git without touching the project's
+# tracked .gitignore. Uses the local git/info/exclude so it applies per-clone
+# for anyone running this hook, with no diff to commit.
+ensure_gitignore() {
+  git -C "$PROJECT_ROOT" check-ignore -q .throughline 2>/dev/null && return 0
+  local git_dir
+  git_dir=$(git -C "$PROJECT_ROOT" rev-parse --absolute-git-dir 2>/dev/null) || return 0
+  mkdir -p "$git_dir/info"
+  grep -qxF ".throughline/" "$git_dir/info/exclude" 2>/dev/null || \
+    printf '.throughline/\n' >> "$git_dir/info/exclude"
+}
+ensure_gitignore
+
 probe() {
   local port pid
   port=$(jq -r '.port' "$RUNTIME" 2>/dev/null)
