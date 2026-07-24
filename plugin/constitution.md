@@ -1,15 +1,8 @@
 # Project Constitution
 
-This document is the operating constitution for AI assistants working in this repository. It defines the principles for _how_ to make changes (the Karpathy's Inspired Four Principles) and the project-specific rules that sit on top of them. Both sections are non-negotiable — when a tool, instruction, or instinct conflicts with what's written here, the constitution wins.
+This document is the operating constitution for AI assistants working in this repository. It defines the rules for _how_ to make changes here — some adapted from general LLM coding pitfalls, some specific to this project. All are non-negotiable — when a tool, instruction, or instinct conflicts with what's written here, the constitution wins.
 
-## The Four Principles
-
-| Principle                 | Addresses                                              |
-| ------------------------- | ------------------------------------------------------ |
-| **Think Before Coding**   | Wrong assumptions, hidden confusion, missing tradeoffs |
-| **Simplicity First**      | Overcomplication, bloated abstractions                 |
-| **Surgical Changes**      | Orthogonal edits, touching code you shouldn't          |
-| **Goal-Driven Execution** | Tests-first, verifiable success criteria               |
+## Rules
 
 ### 1. Think Before Coding
 
@@ -76,27 +69,7 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let the LLM loop independently. Weak criteria ("make it work") require constant clarification.
 
-## How to Know It's Working
-
-These guidelines are working if you see:
-
-- **Fewer unnecessary changes in diffs** — Only requested changes appear
-- **Fewer rewrites due to overcomplication** — Code is simple the first time
-- **Clarifying questions come before implementation** — Not after mistakes
-- **Clean, minimal PRs** — No drive-by refactoring or "improvements"
-
-## Tradeoff Note
-
-These guidelines bias toward **caution over speed**. For trivial tasks (simple typo fixes, obvious one-liners), use judgment — not every change needs the full rigor.
-
-The goal is reducing costly mistakes on non-trivial work, not slowing down simple tasks.
-
-## Project-Specific Rules
-
-These repo-specific rules extend the Karpathy principles above. Apply them
-whenever working in this codebase.
-
-### Test-Driven Development is mandatory
+### 5. Test-Driven Development is mandatory
 
 Before writing implementation code for any new feature or bug fix:
 
@@ -121,7 +94,7 @@ edits, quick fixes, and one-off scripts that touch behavior.
 behavior contract to be made explicit _before_ the implementation
 crystallizes around an unstated assumption.
 
-### Verification before "done"
+### 6. Verification before "done"
 
 Don't claim a task complete without running the relevant checks:
 
@@ -138,7 +111,7 @@ Don't claim a task complete without running the relevant checks:
 in place is still a red suite — it erodes the signal that "tests pass" is supposed to give, and
 the next person to touch this code inherits it as if it were new.
 
-### Maintain running implementation notes
+### 7. Maintain running implementation notes
 
 While implementing any task, maintain a running per-session notes file under `.throughline/notes/` (create it if missing, along with `.throughline/notes/<session_id>.pointer` pointing to it — see `plugin/hooks/notes-check.sh`). The pointer's single line is just the notes file's bare filename (e.g. `<slug>-<timestamp>.md`), not a path. This is a local working log, not a reviewer-facing file: it is gitignored and scoped to the session that wrote it. Update it as you work, not as a summary at the end.
 
@@ -151,7 +124,7 @@ Record entries under four sections:
 
 Keep entries to one or two lines each, with file/function references where relevant. Do NOT log trivia (formatting, naming, obvious idioms). Instead, record only what a reviewer would otherwise have to reverse-engineer from the diff.
 
-### Escalate to advisor after 2 failed iterations
+### 8. Escalate to advisor after 2 failed iterations
 
 If you have attempted to resolve an issue (bug fix, test failure, unexpected behavior, or recurring error) **2 times without success**, stop and call the `advisor` tool before trying again.
 
@@ -161,7 +134,7 @@ If you have attempted to resolve an issue (bug fix, test failure, unexpected beh
 
 **Why:** Two failed iterations signal either a wrong assumption or a missing constraint. Advisor sees the full conversation history and can break the deadlock faster than a third blind attempt.
 
-### Consult the source of truth before changes with a design or schema contract
+### 9. Consult the source of truth before changes with a design or schema contract
 
 Before making changes in any domain that has a dedicated spec or contract document (visual design, data schema, API contracts, content structure, etc.), **read that document first**. Do not infer conventions from existing code or components.
 
@@ -171,7 +144,7 @@ Before making changes in any domain that has a dedicated spec or contract docume
 
 **Why:** Spec documents encode non-obvious decisions and constraints that examples alone cannot reliably convey. Inferring from examples propagates and amplifies any drift already present.
 
-### `docs/superpowers/` is historical, not a backlog
+### 10. `docs/superpowers/` is historical, not a backlog
 
 Specs and plans under `docs/superpowers/specs/` and `docs/superpowers/plans/`
 are **records of past implementation decisions**, not active tickets:
@@ -182,7 +155,7 @@ are **records of past implementation decisions**, not active tickets:
 
 Current work comes from the user in this session.
 
-### Never commit, push, or open PRs without an explicit request
+### 11. Never commit, push, or open PRs without an explicit request
 
 Even when work feels complete, do **not** run `git commit`, `git push`,
 `git merge`, `gh pr create`, `gh pr merge`, or any branch-mutating command
@@ -194,6 +167,21 @@ without the user asking for it in _this_ session.
 **Why:** Commits and PRs are shared state — visible to collaborators and
 harder to undo than a local file change.
 
+## How to Know It's Working
+
+These rules are working if you see:
+
+- **Fewer unnecessary changes in diffs** — Only requested changes appear
+- **Fewer rewrites due to overcomplication** — Code is simple the first time
+- **Clarifying questions come before implementation** — Not after mistakes
+- **Clean, minimal PRs** — No drive-by refactoring or "improvements"
+
+## Tradeoff Note
+
+These rules bias toward **caution over speed**. For trivial tasks (simple typo fixes, obvious one-liners), use judgment — not every change needs the full rigor.
+
+The goal is reducing costly mistakes on non-trivial work, not slowing down simple tasks.
+
 ---
 
-_The Four Principles are adapted from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on common LLM coding pitfalls._
+_Rules 1-4 are adapted from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on common LLM coding pitfalls._
