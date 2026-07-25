@@ -323,10 +323,19 @@ export class StoryService {
     linkedPlan: string | null,
   ): void {
     const ts = Date.now();
+    const existing = this.db
+      .query<{ seq: number | null }, [string]>("SELECT seq FROM stories WHERE id = ?")
+      .get(id);
+    // Preserve seq across updates to a known row. For a row not yet in the DB
+    // (e.g. loadAll()/reconcile() picking up an on-disk file before any create()
+    // has run), derive it from the id itself so the US{n} counter in create()
+    // doesn't collide with numbered ids it never assigned.
+    const numericId = /^US(\d+)$/.exec(id);
+    const seq = existing ? existing.seq : numericId ? Number(numericId[1]) : null;
     this.db.run(
       `INSERT OR REPLACE INTO stories (id, file_path, title, size, status, linked_spec_path, linked_plan_path, created_at, updated_at, seq)
-       VALUES (?, ?, ?, ?, ?, ?, ?, COALESCE((SELECT created_at FROM stories WHERE id = ?), ?), ?, (SELECT seq FROM stories WHERE id = ?))`,
-      [id, filePath, title, size, status, linkedSpec, linkedPlan, id, ts, ts, id],
+       VALUES (?, ?, ?, ?, ?, ?, ?, COALESCE((SELECT created_at FROM stories WHERE id = ?), ?), ?, ?)`,
+      [id, filePath, title, size, status, linkedSpec, linkedPlan, id, ts, ts, seq],
     );
   }
 }

@@ -18,7 +18,7 @@ describe("StoryService", () => {
   let bus: Bus;
 
   beforeEach(async () => {
-    cwd = join(tmpdir(), `cc-stories-${Date.now()}`);
+    cwd = join(tmpdir(), `cc-stories-${Date.now()}-${crypto.randomUUID()}`);
     db = new Database(":memory:");
     await runMigrations(db, MIGRATIONS_DIR);
     publishedEvents = [];
@@ -237,7 +237,7 @@ describe("StoryService", () => {
 
   test("reconcile() upserts on-disk file absent from SQLite and emits create event", async () => {
     // Fresh service without start() — no watcher, no loadAll, avoids race with active watcher
-    const isolatedCwd = join(tmpdir(), `cc-reconcile-${Date.now()}`);
+    const isolatedCwd = join(tmpdir(), `cc-reconcile-${Date.now()}-${crypto.randomUUID()}`);
     const storiesDir = join(isolatedCwd, "docs/superpowers/stories");
     await mkdir(storiesDir, { recursive: true });
 
@@ -317,6 +317,17 @@ describe("StoryService", () => {
     );
     (service as any).upsertRow(id, filePath, "New Format", "backlog", null, null, null);
     expect(service.get(id)).not.toBeNull();
+  });
+
+  test("create() does not collide with a US{n} id first loaded via upsertRow", async () => {
+    // Simulates loadAll()/handleFileEvent() picking up a pre-existing US-numbered
+    // file before any create() has run against this db — e.g. a daemon restart
+    // where the DB doesn't yet know about on-disk story files.
+    const filePath = join(cwd, "docs/superpowers/stories", "US1.md");
+    (service as any).upsertRow("US1", filePath, "Preexisting", "backlog", null, null, null);
+
+    const story = await service.create("New Story");
+    expect(story.id).toBe("US2");
   });
 
   test("create() assigns sequential ids", async () => {
