@@ -1,4 +1,5 @@
 import { afterAll, beforeAll, describe, expect, test } from "bun:test";
+import { existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -9,7 +10,7 @@ describe("full hook round-trip", () => {
 
   beforeAll(async () => {
     const dataDir = join(tmpdir(), `cc-integration-${Date.now()}`);
-    daemon = await startDaemon({ port: 0, dataDir });
+    daemon = await startDaemon({ port: 0, dataDir, cwd: dataDir });
   });
 
   afterAll(async () => {
@@ -91,6 +92,59 @@ describe("full hook round-trip", () => {
     expect(session?.status).toBe("ended");
   });
 
+  test("SessionEnd handoff generation does not leak outside the sandboxed dataDir", async () => {
+    const sessionId = "sbxcheck-leak-guard";
+    const base = {
+      session_id: sessionId,
+      transcript_path: "/tmp/t.json",
+      cwd: "/tmp/project",
+      permission_mode: "default",
+    };
+    const headers = {
+      Host: `127.0.0.1:${daemon.port}`,
+      Authorization: `Bearer ${daemon.token}`,
+      "Content-Type": "application/json",
+    };
+
+    await fetch(`http://127.0.0.1:${daemon.port}/hooks/SessionStart`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ ...base, hook_event_name: "SessionStart" }),
+    });
+    await fetch(`http://127.0.0.1:${daemon.port}/hooks/SessionEnd`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ ...base, hook_event_name: "SessionEnd" }),
+    });
+
+    // fire-and-forget generation: retry briefly until the handoff appears
+    let generated = false;
+    for (let i = 0; i < 20; i++) {
+      const res = await fetch(`http://127.0.0.1:${daemon.port}/api/handoffs/latest`, { headers });
+      if (res.status === 200) {
+        const body = await res.json();
+        if (body.session_id === sessionId) {
+          generated = true;
+          break;
+        }
+      }
+      await new Promise((r) => setTimeout(r, 50));
+    }
+    expect(generated).toBe(true);
+
+    // The daemon was started with only dataDir sandboxed; if cwd isn't sandboxed
+    // too, HandoffService writes into the real project directory instead.
+    const dateStr = new Date().toISOString().slice(0, 10);
+    const shortId = sessionId.slice(0, 8);
+    const leakedPath = join(
+      process.cwd(),
+      ".throughline",
+      "handoffs",
+      `${dateStr}-session-${shortId}.md`,
+    );
+    expect(existsSync(leakedPath)).toBe(false);
+  });
+
   test("POST Stop → 200 {} (observer contract over HTTP)", async () => {
     const res = await fetch(`http://127.0.0.1:${daemon.port}/hooks/Stop`, {
       method: "POST",
@@ -117,7 +171,7 @@ describe("session creation from hook + PATCH active_story_id", () => {
 
   beforeAll(async () => {
     const dataDir = join(tmpdir(), `cc-session-active-${Date.now()}`);
-    daemon = await startDaemon({ port: 0, dataDir });
+    daemon = await startDaemon({ port: 0, dataDir, cwd: dataDir });
   });
 
   afterAll(async () => {
@@ -185,6 +239,7 @@ describe("rate limiting integration", () => {
     daemon = await startDaemon({
       port: 0,
       dataDir,
+      cwd: dataDir,
       rateLimit: { limit: 1, windowMs: 60_000 },
     });
   });
@@ -234,11 +289,11 @@ describe("rate limiting integration", () => {
 describe("token persistence across restarts", () => {
   test("second startDaemon with the same dataDir reuses the token", async () => {
     const dataDir = join(tmpdir(), `cc-token-persist-${Date.now()}`);
-    const d1 = await startDaemon({ port: 0, dataDir });
+    const d1 = await startDaemon({ port: 0, dataDir, cwd: dataDir });
     const token1 = d1.token;
     await d1.stop();
 
-    const d2 = await startDaemon({ port: 0, dataDir });
+    const d2 = await startDaemon({ port: 0, dataDir, cwd: dataDir });
     const token2 = d2.token;
     await d2.stop();
 

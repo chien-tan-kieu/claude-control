@@ -11,7 +11,7 @@ describe("startDaemon", () => {
 
   beforeAll(async () => {
     dataDir = join(tmpdir(), `cc-test-${Date.now()}`);
-    handle = await startDaemon({ port: 0, dataDir });
+    handle = await startDaemon({ port: 0, dataDir, cwd: dataDir });
   });
 
   afterAll(async () => {
@@ -69,7 +69,7 @@ describe("port range fallback", () => {
     try {
       const dataDir2 = join(tmpdir(), `cc-fallback-${Date.now()}`);
       // Use portRangeStart to make startDaemon try basePort first (range mode)
-      const handle2 = await startDaemon({ portRangeStart: basePort, dataDir: dataDir2 });
+      const handle2 = await startDaemon({ portRangeStart: basePort, dataDir: dataDir2, cwd: dataDir2 });
       expect(handle2.port).toBeGreaterThan(occupiedPort);
       expect(handle2.port).toBeLessThanOrEqual(basePort + 9);
       await handle2.stop();
@@ -89,7 +89,7 @@ describe("startDaemon with custom webDistPath", () => {
       "<!doctype html><html><body>CUSTOM-MARKER</body></html>",
     );
 
-    const handle = await startDaemon({ port: 0, dataDir, webDistPath });
+    const handle = await startDaemon({ port: 0, dataDir, cwd: dataDir, webDistPath });
     try {
       const res = await fetch(`http://127.0.0.1:${handle.port}/`, {
         headers: { Host: `127.0.0.1:${handle.port}` },
