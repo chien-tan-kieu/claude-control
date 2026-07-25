@@ -10,6 +10,18 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [3.3.2] - 2026-07-25
+
+- fix(server): correct seq derivation in StoryService.upsertRow
+- test(server): sandbox cwd alongside dataDir in startDaemon() tests
+- chore: update graphify knowledge graph
+- fix(plugin): move internal command helpers out of commands/ dir
+- feat(plugin): add /throughline:notes and /throughline:notes-clean commands
+- chore: consolidate codebase-understanding tooling on graphify
+- clean-up redundant/duplicated understand-anything docs
+- chore: drop .throughline/ from tracked .gitignore
+
 ## [3.3.1] - 2026-07-24
 
 - feat(plugin): auto-exclude .throughline/ via git/info/exclude
