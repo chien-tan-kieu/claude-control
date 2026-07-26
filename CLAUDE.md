@@ -78,11 +78,13 @@ If a run fails *after* step 4 has pushed the version-bump commit but before the 
 
 ## graphify
 
-This project has a graphify knowledge graph at graphify-out/.
+This project has a graphify knowledge graph at graphify-out/. It answers "how does X relate to Y", "what calls/depends on X", and "why does X connect to Y" faster and more completely than grep, because it traverses the graph's EXTRACTED + INFERRED edges instead of scanning file text.
 
-Rules:
-- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
-- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
-- For cross-module "how does X relate to Y" questions, prefer `graphify query "<question>"`, `graphify path "<A>" "<B>"`, or `graphify explain "<concept>"` over grep — these traverse the graph's EXTRACTED + INFERRED edges instead of scanning files
-- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
-- If `graphify-out/.graphify_root` doesn't match `pwd`, the graph was built under a different path (e.g. a repo rename) — treat it as stale and do a full rebuild rather than `--update`
+TRIGGER — before reaching for grep/rg/ripgrep/find to locate a symbol, trace a call chain, understand a relationship, or answer any architecture/codebase question: run `graphify query "<question>"` (broad context, BFS), `graphify path "<A>" "<B>"` (a specific chain, e.g. "how does A reach B"), or `graphify explain "<concept>"` (everything connected to one node) FIRST. Read `graphify-out/GRAPH_REPORT.md` for god nodes and community structure before any broad architecture question. If `graphify-out/wiki/index.md` exists, navigate it instead of reading raw files.
+
+SKIP graphify and use grep/rg directly when: searching for a literal string, error message, or exact text match (not a concept or relationship); the target file/directory is already known (no need to discover it); or `graphify-out/graph.json` does not exist / `graphify-out/.graphify_root` doesn't match `pwd` (stale — treat as absent, do a full rebuild, don't fall back to grep silently without noting the graph is unavailable).
+
+Maintenance:
+- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost, code files only).
+- Doc/spec/plan changes are NOT covered by `graphify update .` — that's AST-only. Run the full `/graphify --update` pass (dispatches LLM subagents) after doc/spec/plan edits, or those nodes silently go stale.
+- If `graphify-out/.graphify_root` doesn't match `pwd`, the graph was built under a different path (e.g. a repo rename) — treat it as stale and do a full rebuild rather than `--update`.
