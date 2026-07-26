@@ -36,6 +36,17 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mkdir -p .claude/logs 2>/dev/null; [ -d graphify-out ] && command -v graphify >/dev/null 2>&1 && (mkdir .claude/logs/.graphify-update.lock 2>/dev/null && (nohup sh -c 'graphify update . > .claude/logs/graphify-update.log 2>&1; rmdir .claude/logs/.graphify-update.lock 2>/dev/null' >/dev/null 2>&1 & disown)); true"
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {
