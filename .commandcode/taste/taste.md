@@ -1,0 +1,2 @@
+- Prefers evidence-backed verification via web research (e.g., checking GitHub repos directly) when evaluating tool/plugin compatibility, rather than relying solely on documented knowledge or assumptions. Confidence: 0.6
+- When told a plugin or tool isn't directly compatible, explores alternative formats and workarounds exhaustively (e.g., checking for Claude plugin, Kimi plugin, or other variants) rather than accepting the initial incompatibility answer. Confidence: 0.5

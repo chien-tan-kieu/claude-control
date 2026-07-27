@@ -17,7 +17,7 @@ throughline/          ← repo root (bun workspaces host)
     server/              ← @throughline/server  — Bun HTTP daemon (bun:test)
     web/                 ← @throughline/web     — React dashboard (vitest)
     shared/              ← @throughline/shared  — Shared TypeScript types
-  plugin/                ← Claude Code plugin (skills, commands, hooks)
+  plugin/                ← Command Code plugin (skills, commands, hooks)
   scripts/               ← Release utility scripts (sync-version.mjs, extract-changelog.mjs)
   .github/workflows/     ← CI (ci.yml) and release (release.yml) pipelines
 ```
