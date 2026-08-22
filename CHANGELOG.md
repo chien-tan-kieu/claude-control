@@ -11,6 +11,27 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [3.3.3] - 2026-08-22
+
+- fix(plugin): restore daemon auto-start on Claude Code
+- chore: migrate from Claude Code to Command Code
+- docs(claude): replace blind graphify-first rule with a query-shape decision tree
+- chore(graphify): refresh graph freshness stamp
+- fix(graphify): make the freshness-stamp skip portable via committed scripts
+- update graphify
+- update graphify
+- update gitignore
+- chore(graphify): refresh graph freshness stamp
+- chore(graphify): refresh graph freshness stamp
+- docs: sharpen graphify CLAUDE.md rule with explicit TRIGGER/SKIP conditions
+- chore(graphify): rebuild knowledge graph and purge stale node paths
+- feat(hooks): auto-update graphify knowledge graph after edits
+- fix(plugin): restore original observer notice wording in throughline skill
+- feat(plugin): add natural-language command dispatch to throughline skill
+- docs: add implementation plan for throughline command dispatch skill
+- docs: add design spec for throughline command dispatch skill
+
 ## [3.3.2] - 2026-07-25
 
 - fix(server): correct seq derivation in StoryService.upsertRow
