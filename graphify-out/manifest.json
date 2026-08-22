@@ -12,7 +12,7 @@
     "hash": "60ca167c868552ca07534e8c1253c401"
   },
   "/Users/chien.tankieu/Development/throughline/scripts/__tests__/release.test.ts": {
-    "mtime": 1784495516.9694602,
+    "mtime": 1785101848.4952712,
     "hash": "315df418703d4f75f7a70e4d668d2774"
   },
   "/Users/chien.tankieu/Development/throughline/scripts/__tests__/sync-version.test.ts": {
@@ -196,8 +196,8 @@
     "hash": "d64f7e5d51f3ed5f225895c9c6ffff20"
   },
   "/Users/chien.tankieu/Development/throughline/packages/server/src/index.ts": {
-    "mtime": 1785017183.5606468,
-    "hash": "1ce4b5872e1d9062d5f3ac975086aabf"
+    "mtime": 1786691275.6100957,
+    "hash": "72e8d399761c47fe12bd99de8456f3ae"
   },
   "/Users/chien.tankieu/Development/throughline/packages/server/src/server.ts": {
     "mtime": 1784495534.26071,
@@ -228,8 +228,8 @@
     "hash": "4eeb727b7815e770b9139523bab6f40c"
   },
   "/Users/chien.tankieu/Development/throughline/packages/server/src/lifecycle/index.ts": {
-    "mtime": 1778306527.263512,
-    "hash": "0f92d49cd646c8b1a75a47a5cd5a978e"
+    "mtime": 1786691245.2350588,
+    "hash": "c43edf359b1789fab614736f6b6cc777"
   },
   "/Users/chien.tankieu/Development/throughline/packages/server/src/stories/template.ts": {
     "mtime": 1778868256.1588237,
@@ -407,9 +407,13 @@
     "mtime": 1777997056.4568236,
     "hash": "c9ba6ea806e1b7f818b93b4734e8a325"
   },
+  "/Users/chien.tankieu/Development/throughline/AGENTS.md": {
+    "mtime": 1785154991.4197578,
+    "hash": "b726bf505802f642c968de4a831a9d35"
+  },
   "/Users/chien.tankieu/Development/throughline/CLAUDE.md": {
-    "mtime": 1785090329.6972308,
-    "hash": "1eb6e8e50f9e759b4ca965e2aee7cf4c"
+    "mtime": 1785154990.1032171,
+    "hash": "461c814333a734551dc584d9ec088f62"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/constitution.md": {
     "mtime": 1784871117.11758,
@@ -432,48 +436,48 @@
     "hash": "a57a03cd1adc15cacdd25221a9391897"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/open.md": {
-    "mtime": 1784928164.9785898,
-    "hash": "bfcc414e0f27286817cd51e67f6c9b36"
+    "mtime": 1786691131.1009736,
+    "hash": "a736548c44fbd8164b42866552db2806"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/status.md": {
-    "mtime": 1784928164.992367,
-    "hash": "dad360d68cebfd824105078fb0443ef4"
+    "mtime": 1786691131.1008997,
+    "hash": "01caed39344938bdefd483932f4d0019"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/standup.md": {
-    "mtime": 1784928164.9884512,
-    "hash": "c0e4f11a90904ae77d4ad6f886dc66ca"
+    "mtime": 1786691131.1012053,
+    "hash": "e2f43b080e6d86265b079c35dd96bdaa"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/resume.md": {
-    "mtime": 1784928164.9830487,
-    "hash": "fdad36b9d78390dbcf5e2e4928f35ad4"
+    "mtime": 1786691131.101325,
+    "hash": "9cf6973b1520f76c71b2ca2ab5509242"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/notes-clean.md": {
     "mtime": 1784927376.3278644,
     "hash": "1a9995f036a4d7f1714ec119eaef3f38"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/plan.md": {
-    "mtime": 1784928164.980866,
-    "hash": "fa2f8d66e44f12f7958f6e2e71c18384"
+    "mtime": 1786691131.1019213,
+    "hash": "9e833da1e1bcfa9466a3b824ea8c100e"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/story.md": {
-    "mtime": 1784928164.9949026,
-    "hash": "72ac617a58eafb854ff9d04918f82b3e"
+    "mtime": 1786691131.1013572,
+    "hash": "a565e1131c1940966dd035b910bbfdb2"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/spec.md": {
-    "mtime": 1784928164.9901927,
-    "hash": "b3d113fbcd5edad7bfd42a0ab7180aa2"
+    "mtime": 1786691131.101336,
+    "hash": "59103fe86e0c94ab57b0bd2dc5699cfa"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/notes.md": {
     "mtime": 1784927367.1453953,
     "hash": "d266550f8cd93d9c160aebbecf83006c"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/start.md": {
-    "mtime": 1784928164.9863641,
-    "hash": "e3581f053e4fdc704caa1a6262e49232"
+    "mtime": 1786691131.1008885,
+    "hash": "d29e14fb3e8e381df2e9c2b67231f403"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/commands/handoff.md": {
-    "mtime": 1784928164.9747996,
-    "hash": "f8fb62f5f322aeb7dc4250a6621a8735"
+    "mtime": 1786691131.101266,
+    "hash": "15c414c848a72b3530222762dc407fe2"
   },
   "/Users/chien.tankieu/Development/throughline/plugin/skills/throughline/SKILL.md": {
     "mtime": 1785062440.8821533,

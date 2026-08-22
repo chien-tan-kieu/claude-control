@@ -8,6 +8,7 @@ import { HandoffService } from "./handoff/index.ts";
 import {
   registerShutdownHandler,
   startIdleTimer,
+  tuneSqlite,
   writeRuntimeJson,
 } from "./lifecycle/index.ts";
 import { createServer } from "./server.ts";
@@ -47,6 +48,7 @@ export async function startDaemon(
   await mkdir(dataDir, { recursive: true });
 
   const db = new Database(join(dataDir, "throughline.db"));
+  tuneSqlite(db);
   await runMigrations(db, MIGRATIONS_DIR);
 
   const tokenFile = join(dataDir, "token");

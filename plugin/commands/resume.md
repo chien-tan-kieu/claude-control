@@ -12,7 +12,7 @@ If a story ID is supplied (the full ID like `US-2026-05-17-billing-engine`), the
 
 1. Ensure the daemon is running (same bootstrap as other commands):
    ```bash
-   bash -c 'S=$(jq -r ".[\"throughline-local\"].installLocation" ~/.claude/plugins/known_marketplaces.json 2>/dev/null)/plugin/lib/ensure-daemon.sh; [ -f "$S" ] && bash "$S" || { echo "Cannot locate throughline install."; exit 1; }'
+   bash -c 'S=$(jq -r ".[\"throughline\"].installLocation" ~/.claude/plugins/known_marketplaces.json 2>/dev/null)/plugin/lib/ensure-daemon.sh; [ -f "$S" ] && bash "$S" || { echo "Cannot locate throughline install."; exit 1; }'
    ```
    If the script prints an error, stop and show it. Otherwise continue.
 

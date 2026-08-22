@@ -15,7 +15,7 @@ probe() {
 if [ -f "$RUNTIME" ] && probe; then exit 0; fi
 
 LOG="$PROJECT_ROOT/.throughline/daemon.log"
-ROOT=$(jq -r '."throughline-local".installLocation' \
+ROOT=$(jq -r '."throughline".installLocation' \
   ~/.claude/plugins/known_marketplaces.json 2>/dev/null)
 [ -z "$ROOT" ] || [ "$ROOT" = "null" ] && \
   echo "Cannot locate throughline install." && exit 1

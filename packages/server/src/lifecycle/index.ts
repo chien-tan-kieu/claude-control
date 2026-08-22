@@ -11,6 +11,17 @@ export interface RuntimeJson {
   version: string;
 }
 
+/**
+ * Tune a freshly-opened SQLite database so concurrent daemon processes
+ * (SessionStart bootstrap racing a command's ensure-daemon) don't crash
+ * startup with SQLITE_BUSY. WAL lets readers/writers coexist and
+ * busy_timeout makes writes wait instead of failing immediately.
+ */
+export function tuneSqlite(db: Database): void {
+  db.run("PRAGMA journal_mode = WAL");
+  db.run("PRAGMA busy_timeout = 5000");
+}
+
 export async function writeRuntimeJson(
   dataDir: string,
   data: RuntimeJson,

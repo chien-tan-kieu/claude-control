@@ -12,7 +12,7 @@ The story ID is the full ID like `US-2026-05-17-billing-engine`.
 
 1. Ensure the daemon is running (same bootstrap as other commands):
    ```bash
-   bash -c 'S=$(jq -r ".[\"throughline-local\"].installLocation" ~/.claude/plugins/known_marketplaces.json 2>/dev/null)/plugin/lib/ensure-daemon.sh; [ -f "$S" ] && bash "$S" || { echo "Cannot locate throughline install."; exit 1; }'
+   bash -c 'S=$(jq -r ".[\"throughline\"].installLocation" ~/.claude/plugins/known_marketplaces.json 2>/dev/null)/plugin/lib/ensure-daemon.sh; [ -f "$S" ] && bash "$S" || { echo "Cannot locate throughline install."; exit 1; }'
    ```
 
 2. Run `cat "$(git rev-parse --show-toplevel 2>/dev/null || pwd)/.throughline/runtime.json"` and extract `port` and `token` from the JSON output.

@@ -12,7 +12,7 @@ Usage: `/throughline:start <story-id>`
 
 1. Ensure daemon is running:
    ```bash
-   bash -c 'S=$(jq -r ".[\"throughline-local\"].installLocation" ~/.claude/plugins/known_marketplaces.json 2>/dev/null)/plugin/lib/ensure-daemon.sh; [ -f "$S" ] && bash "$S" || { echo "Cannot locate throughline install."; exit 1; }'
+   bash -c 'S=$(jq -r ".[\"throughline\"].installLocation" ~/.claude/plugins/known_marketplaces.json 2>/dev/null)/plugin/lib/ensure-daemon.sh; [ -f "$S" ] && bash "$S" || { echo "Cannot locate throughline install."; exit 1; }'
    ```
    If the script prints an error, stop and show it. Otherwise continue.
 
@@ -60,7 +60,7 @@ Usage: `/throughline:start <story-id>`
    Resolve the install location and construct the absolute path to the mode file:
 
    ```bash
-   INSTALL=$(jq -r '."throughline-local".installLocation' ~/.claude/plugins/known_marketplaces.json 2>/dev/null)
+   INSTALL=$(jq -r '."throughline".installLocation' ~/.claude/plugins/known_marketplaces.json 2>/dev/null)
    if [ -z "$INSTALL" ] || [ "$INSTALL" = "null" ]; then echo "Cannot resolve throughline install location."; exit 1; fi
    echo "$INSTALL/plugin/lib/start/<mode-file>"
    ```

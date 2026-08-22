@@ -1,16 +1,16 @@
-# Graph Report - throughline  (2026-07-27)
+# Graph Report - throughline  (2026-08-14)
 
 ## Corpus Check
-- 99 files · ~162,040 words
+- 99 files · ~163,328 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 530 nodes · 869 edges · 38 communities (22 shown, 16 thin omitted)
-- Extraction: 83% EXTRACTED · 17% INFERRED · 0% AMBIGUOUS · INFERRED: 145 edges (avg confidence: 0.83)
+- 531 nodes · 872 edges · 39 communities (24 shown, 15 thin omitted)
+- Extraction: 83% EXTRACTED · 17% INFERRED · 0% AMBIGUOUS · INFERRED: 146 edges (avg confidence: 0.83)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fcda2c6a`
+- Built from commit: `044d5ecf`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -40,7 +40,7 @@
 - [[_COMMUNITY_Migration Runner Tests|Migration Runner Tests]]
 - [[_COMMUNITY_Handoff Service Test Suite|Handoff Service Test Suite]]
 - [[_COMMUNITY_Hook Event Schemas|Hook Event Schemas]]
-- [[_COMMUNITY_Community 30|Community 30]]
+- [[_COMMUNITY_Community 25|Community 25]]
 - [[_COMMUNITY_Community 31|Community 31]]
 - [[_COMMUNITY_Community 32|Community 32]]
 - [[_COMMUNITY_Community 33|Community 33]]
@@ -48,6 +48,7 @@
 - [[_COMMUNITY_Community 35|Community 35]]
 - [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
+- [[_COMMUNITY_Community 38|Community 38]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `HandoffService` - 20 edges
@@ -57,7 +58,7 @@
 5. `PRD — Throughline` - 15 edges
 6. `Advisor Review — Claude Control (English)` - 13 edges
 7. `WsServer` - 12 edges
-8. `startDaemon()` - 10 edges
+8. `startDaemon()` - 11 edges
 9. `api client` - 10 edges
 10. `Spec: Throughline Foundation (Weeks 1-2)` - 8 edges
 
@@ -99,19 +100,19 @@
 - **Release orchestration: bump, sync, changelog** — release_main, release_bumpversion, sync_version_syncversion, release_buildchangelogentry [EXTRACTED 0.90]
 - **Commands share daemon bootstrap + runtime.json auth** — ensure_daemon_bootstrap, runtime_json, start_command, story_command, handoff_command [INFERRED 0.85]
 
-## Communities (38 total, 16 thin omitted)
+## Communities (39 total, 15 thin omitted)
 
 ### Community 0 - "Server Lifecycle & Hook Dispatch"
-Cohesion: 0.08
-Nodes (15): dispatchEvent(), handleHookEvent(), registerShutdownHandler(), startIdleTimer(), writeRuntimeJson(), createBus(), startDaemon(), createServer() (+7 more)
+Cohesion: 0.09
+Nodes (14): dispatchEvent(), handleHookEvent(), registerShutdownHandler(), startIdleTimer(), tuneSqlite(), writeRuntimeJson(), createBus(), startDaemon() (+6 more)
 
 ### Community 1 - "Command Dispatch & Observer Contract Design"
 Cohesion: 0.06
-Nodes (53): /throughline:resume command, start.md command (status-branching dispatch), Anchored trigger description (first line of defense), Dynamic command discovery from frontmatter (no static table), Read-only vs mutating tiers + confirmation gate, plugin/skills/throughline/SKILL.md (command dispatch router), bootstrap.sh (daemon probe + spawn), checkAuth (bearer token + Host validation) (+45 more)
+Nodes (11): useWebSocket(), apiFetch(), base(), formatDigest(), handleCopy(), HierarchyStrip(), SizePill(), StatusPill() (+3 more)
 
 ### Community 2 - "Web App Shell & Shared Components"
-Cohesion: 0.06
-Nodes (11): useWebSocket(), apiFetch(), base(), formatDigest(), handleCopy(), HierarchyStrip(), SizePill(), StatusPill() (+3 more)
+Cohesion: 0.09
+Nodes (16): mountHandoffRoutes(), relativeAge(), mountApiRoutes(), mountSessionRoutes(), mountStandupRoutes(), mountStoryRoutes(), mountSuperpowersRoutes(), validatePath() (+8 more)
 
 ### Community 3 - "Project Docs & Prior Art Research"
 Cohesion: 0.09
@@ -122,72 +123,80 @@ Cohesion: 0.09
 Nodes (39): api client, apiFetch helper, App, Shell, DocsPage, DocsPage test suite, FilterBar, FilterBar test suite (+31 more)
 
 ### Community 5 - "API Route Mounting"
-Cohesion: 0.11
-Nodes (13): mountHandoffRoutes(), relativeAge(), mountApiRoutes(), mountSessionRoutes(), mountStandupRoutes(), mountStoryRoutes(), parseFrontmatter(), StandupService (+5 more)
+Cohesion: 0.09
+Nodes (32): /throughline:resume command, start.md command (status-branching dispatch), Anchored trigger description (first line of defense), Dynamic command discovery from frontmatter (no static table), Read-only vs mutating tiers + confirmation gate, plugin/skills/throughline/SKILL.md (command dispatch router), checkAuth (bearer token + Host validation), Use command hooks (not HTTP hooks) for all events (+24 more)
 
 ### Community 6 - "Superpowers Parser & Diff Engine"
 Cohesion: 0.09
-Nodes (8): mountSuperpowersRoutes(), validatePath(), parsePlan(), diffCheckboxState(), SuperpowersWatcher, parseSpec(), advancePhase(), inferPhase()
-
-### Community 7 - "HandoffService Generation Logic"
-Cohesion: 0.09
 Nodes (30): dispatchEvent, Handlers handoff tests, SKILL_PHASE_MAP, mountHandoffRoutes, relativeAge, ApiCtx, endSession, handleHookEvent (+22 more)
 
-### Community 8 - "Daemon Lifecycle & Schema Migrations"
+### Community 7 - "HandoffService Generation Logic"
 Cohesion: 0.08
 Nodes (28): sessions table, stories table, handoffs table (initial), stories.seq column, handoffs table rebuild (session_id), BusEvent union, createBus, startDaemon daemon test (+20 more)
+
+### Community 8 - "Daemon Lifecycle & Schema Migrations"
+Cohesion: 0.12
+Nodes (5): parsePlan(), diffCheckboxState(), SuperpowersWatcher, advancePhase(), inferPhase()
 
 ### Community 9 - "Shared Types & Core Services"
 Cohesion: 0.11
 Nodes (24): EventRecord, Phase, Session, WSOut, CheckboxDiff, diffCheckboxState, applyPatch, isValidStoryId (+16 more)
 
 ### Community 10 - "Story Sync & Incremental ID Design"
-Cohesion: 0.13
-Nodes (23): Plan: Real-Time Story Sync, Spec: Real-Time Story Sync, Spec: Spec/Plan Viewer (DocsPage), Spec: Incremental Story IDs (US{n}), Spec: Superpowers Integration + Stories (Phase 2), Incremental story IDs US{n} (seq column + MAX(seq)+1), Migration 004_story_seq.sql (seq column + partial unique index), diffCheckboxState (plan checkbox diff) (+15 more)
+Cohesion: 0.15
+Nodes (23): bootstrap.sh (daemon probe + spawn), Block-to-continue nudge (git-state staleness), notes-check.sh (Stop-hook staleness detector), plugin/constitution.md (running implementation notes rule), Per-session notes file + pointer indirection, 2-strike fail-open cap (per-session counter), Plan: Manual Release Workflow, Plan: Plugin Distribution Build (+15 more)
 
 ### Community 11 - "Start Command & Session Notes"
 Cohesion: 0.14
 Nodes (22): Active story (sessions/current), Start mode: Backlog (brainstorming), superpowers:brainstorming skill, DocsPage.tsx dashboard component, Start mode: Done (closure review), Daemon bootstrap (ensure-daemon.sh), /throughline:handoff command, Implementation notes artifacts (pointer, notes file, nudge counter) (+14 more)
 
-### Community 14 - "Version Sync & Release Scripts"
+### Community 12 - "Kanban Board & Drag Interactions"
+Cohesion: 0.14
+Nodes (21): Plan: Real-Time Story Sync, Spec: Real-Time Story Sync, Spec: Spec/Plan Viewer (DocsPage), Spec: Incremental Story IDs (US{n}), Spec: Superpowers Integration + Stories (Phase 2), Incremental story IDs US{n} (seq column + MAX(seq)+1), Migration 004_story_seq.sql (seq column + partial unique index), diffCheckboxState (plan checkbox diff) (+13 more)
+
+### Community 13 - "HandoffService Method Suite"
+Cohesion: 0.18
+Nodes (3): HandoffService, seedActivity(), seedEvent()
+
+### Community 15 - "Changelog Extraction & Release"
 Cohesion: 0.33
 Nodes (4): buildChangelogEntry(), bumpVersion(), main(), syncVersion()
 
-### Community 15 - "Changelog Extraction & Release"
+### Community 16 - "Stories Refresh & Filter Feature"
 Cohesion: 0.29
 Nodes (8): CHANGELOG.md, extractChangelog(), buildChangelogEntry(), bumpVersion(), release.mjs main(), root package.json (authoritative version), makeFixture() test helper, syncVersion()
 
-### Community 16 - "Stories Refresh & Filter Feature"
+### Community 17 - "Auth & Rate Limiting"
 Cohesion: 0.54
 Nodes (8): Plan: Stories Refresh Button & Last-Updated Time, Spec: Filter Stories by Status, Spec: Stories Refresh Button & Last-Updated Time, FilterBar (status pills + refresh control), KanbanColumn (isFiltered fade + empty state), Refresh button + last-updated timestamp (dataUpdatedAt), StoriesPage (kanban board, useQuery stories), useUiStore (Zustand UI store, storyFilter)
 
-### Community 19 - "Security Module Tests"
+### Community 20 - "Plugin README & Status Commands"
 Cohesion: 1.0
 Nodes (3): checkAuth, RateLimiter, Security tests
 
-### Community 20 - "Plugin README & Status Commands"
+### Community 21 - "Plan Tables Schema"
 Cohesion: 0.67
 Nodes (3): /throughline:open command, Throughline plugin README, /throughline:status command
 
 ## Knowledge Gaps
 - **84 isolated node(s):** `Advisor Review — Claude Control (Vietnamese)`, `Per-Session Implementation Notes Implementation Plan`, `Workflow Visualizer (Surface A)`, `Story sizing (S/M/L)`, `Scrum-vs-Kanban product framing critique` (+79 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `SuperpowersWatcher` connect `Superpowers Parser & Diff Engine` to `Server Lifecycle & Hook Dispatch`, `API Route Mounting`?**
+- **Why does `SuperpowersWatcher` connect `Daemon Lifecycle & Schema Migrations` to `Server Lifecycle & Hook Dispatch`, `Web App Shell & Shared Components`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **Why does `StoryService` connect `API Route Mounting` to `Server Lifecycle & Hook Dispatch`?**
+- **Why does `StoryService` connect `Web App Shell & Shared Components` to `Server Lifecycle & Hook Dispatch`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `HandoffService` connect `HandoffService Method Suite` to `Server Lifecycle & Hook Dispatch`, `API Route Mounting`?**
+- **Why does `HandoffService` connect `HandoffService Method Suite` to `Server Lifecycle & Hook Dispatch`, `Web App Shell & Shared Components`?**
   _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `PRD — Throughline` (e.g. with `Incremental Story IDs (US{n}) Implementation Plan` and `Phase 2: Superpowers Integration + Stories Implementation Plan`) actually correct?**
   _`PRD — Throughline` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Advisor Review — Claude Control (Vietnamese)`, `Per-Session Implementation Notes Implementation Plan`, `Workflow Visualizer (Surface A)` to the rest of the system?**
   _84 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Server Lifecycle & Hook Dispatch` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09 - nodes in this community are weakly interconnected._
 - **Should `Command Dispatch & Observer Contract Design` be split into smaller, more focused modules?**
   _Cohesion score 0.06 - nodes in this community are weakly interconnected._

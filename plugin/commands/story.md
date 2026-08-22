@@ -12,7 +12,7 @@ Manage stories. Usage: `/throughline:story <subcommand> [args]`
 
 Run this to check and auto-start if needed:
 ```bash
-bash -c 'S=$(jq -r ".[\"throughline-local\"].installLocation" ~/.claude/plugins/known_marketplaces.json 2>/dev/null)/plugin/lib/ensure-daemon.sh; [ -f "$S" ] && bash "$S" || { echo "Cannot locate throughline install."; exit 1; }'
+bash -c 'S=$(jq -r ".[\"throughline\"].installLocation" ~/.claude/plugins/known_marketplaces.json 2>/dev/null)/plugin/lib/ensure-daemon.sh; [ -f "$S" ] && bash "$S" || { echo "Cannot locate throughline install."; exit 1; }'
 ```
 If the script prints an error, stop and show it to the user. Otherwise continue.
 

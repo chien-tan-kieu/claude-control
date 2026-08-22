@@ -4,7 +4,8 @@
       "Shell(bash:*)",
       "Shell(git:*)",
       "Shell(node:*)",
-      "WebSearch"
+      "WebSearch",
+      "Shell(bun:*)"
     ]
   },
   "hooks": {
